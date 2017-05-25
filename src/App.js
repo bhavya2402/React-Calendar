@@ -93,6 +93,7 @@ class App extends Component {
                 <BigCalendar  
                     {...this.props} 
                     selectable
+                    popup
                     defaultDate={new Date(2015, 3, 1)} 
                     onSelectEvent={event => alert("selected")}
                     onSelectSlot={(slotInfo) => alert(
