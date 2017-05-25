@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import BigCalendar from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import moment from 'moment';
-import logo from './logo.svg';
 import './App.css';
 
 BigCalendar.setLocalizer(
@@ -80,18 +79,32 @@ let events = [
     'end': new Date(2015, 3, 13, 10, 30, 0)
   }
 ]
+/*let events = [{
+    'start': new Date(2015, 3, 1),
+    'end': new Date(2015, 3, 30)
+}]*/
 
 class App extends Component {
   
-  render() {
-    return (
-      <div className="App">
-        <h2>Calendar</h2>
-        <BigCalendar  {...this.props}  defaultDate={new Date(2015, 3, 1)} views={allViews} events={events}
-/>
-      </div>
-    );
-  }
+    render(){
+        return (
+            <div className="App">
+                <h2>Calendar</h2>
+                <BigCalendar  
+                    {...this.props} 
+                    selectable
+                    defaultDate={new Date(2015, 3, 1)} 
+                    onSelectEvent={event => alert("selected")}
+                    onSelectSlot={(slotInfo) => alert(
+                        `selected slot: \n\nstart ${slotInfo.start.toLocaleString()} ` +
+                        `\nend: ${slotInfo.end.toLocaleString()}`
+                    )}
+                    views={allViews} 
+                    events={events}
+                />
+            </div>
+        );
+    }
 }
 
 export default App;
